@@ -1,5 +1,6 @@
 // Business Logic
 var secondRunMovie = ["The Matrix"];
+var subTotal = 0;
 
 function Ticket(movie, time, age){
   this.movie = movie;
@@ -56,15 +57,27 @@ Ticket.prototype.calculate = function() {
 $(document).ready(function(){
   $("#formOne").submit(function(event){
     event.preventDefault();
+
+    // Grab user inputs
     var movie = $("input:radio[name=movie]:checked").val();
     var time = $("input:radio[name=time]:checked").val();
     var age = $("input:radio[name=age]:checked").val();
+    // Creating a newTicket instance using the Ticket constructor
     var newTicket = new Ticket(movie, time, age);
-    var ticketPrice = newTicket.calculate();
-    console.log(newTicket);
+    subTotal += newTicket.price;
 
+    // Prints out subtotal
+    $("#subtotal").text(subTotal);
+    // Prints out tickets, assign cancel-ticket button the value of the price of the ticket
     $("#print-ticket").show();
-    $("#print-ticket").append("<div class='ticket'><h4>" + movie + "</h4><br><p>Show Time:" + time + "<br>Type:" + age + "<br>Total: $" + newTicket.price + "</p></div>");
+    $("#print-ticket").append("<div class='ticket'><h4>" + movie + "</h4><br><p>Show Time:" + time + "<br>Type:" + age + "<br>Total: $" + newTicket.price + "</p><button class='btn btn-danger cancel-ticket' value=" + newTicket.price + ">X</button></div>");
+
+    // Allows user to cancel ticket and update subtotals
+    $(".cancel-ticket").last().click(function() {
+      subTotal -= parseInt(($(this).val()));
+      $("#subtotal").text(subTotal);
+      $(this).parent("div").remove();
+    });
 
   });
 });
