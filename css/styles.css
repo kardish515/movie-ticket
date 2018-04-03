@@ -1,0 +1,7 @@
+#print-ticket {
+  display: none;
+}
+
+.ticket {
+  border: 1px dashed gray;
+}

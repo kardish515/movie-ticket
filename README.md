@@ -1,10 +1,10 @@
-# **[Enter Project Name]**
+# **Movie Ticket**
 
-#### By William Chu
+#### By William Chu and Nick Kardish
 
 ## Description
 
-[Enter description]
+Practice JavaScript objects and constructors.
 
 ## Specifications
 
@@ -13,9 +13,6 @@
 | Description | Input =  | Output = |
 
 ## Setup/Installation Requirements
-
-* To view project code, _clone repository from_ https://github.com/william-chu/projectname
-* To view project, _open in web browser_ http://william-chu.github.io/projectname
 
 ## Known Bugs
 
@@ -29,4 +26,4 @@
 
 * GPL
 
-William Chu © 2018
+William Chu and Nick Kardish © 2018
