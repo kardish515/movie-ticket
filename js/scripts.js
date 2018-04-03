@@ -1,11 +1,41 @@
 // Business Logic
+var secondRunMovie = ["The Matrix"];
+
 function Ticket(movie, time, age){
   this.movie = movie;
   this.time = time;
   this.age = age;
-  this.price = this.calculate();
+  this.isSecondRun = this.secondRun();
   this.isMatinee = this.matinee();
-  this.isChildSenior =
+  this.isChildSenior = this.childSenior();
+  this.price = this.calculate();
+}
+
+Ticket.prototype.secondRun = function() {
+  if (secondRunMovie.includes(this.movie)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+Ticket.prototype.matinee = function() {
+  if (this.time  === "AM") {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+Ticket.prototype.childSenior = function() {
+  if (this.age  === "Child" || this.age === "Senior") {
+    return true;
+  }
+  else {
+    return false;
+  }
 }
 
 Ticket.prototype.calculate = function() {
@@ -20,24 +50,6 @@ Ticket.prototype.calculate = function() {
     total -= 2;
   }
   return total;
-}
-
-Ticket.prototype.matinee = function() {
-  if (this.time  === "AM") {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-Ticket.prototype.matinee = function() {
-  if (this.time  === "AM") {
-    return true;
-  }
-  else {
-    return false;
-  }
 }
 
 // User Interface Logic
